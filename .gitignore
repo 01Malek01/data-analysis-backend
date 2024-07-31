@@ -1,0 +1,78 @@
+# Operating system generated
+.DS_Store
+Thumbs.db
+
+# IDE Files
+.idea
+*.suo
+*.swp
+
+# Text editors
+.vscode/*
+*.sublime-project
+*.atom
+
+# Logs and caches
+logs/*
+*.log
+*.tmp
+*.cache
+npm-debug.log
+
+# Bundled dependencies
+node_modules
+bower_components
+yarn.lock
+package-lock.json
+
+# Build artifacts
+dist
+build
+coverage
+
+# Test results
+test-results
+*.test-results
+
+# Database files
+*.db
+*.sqlite
+
+# OS-specific files
+.DS_Store # macOS
+Thumbs.db # Windows
+
+# Virtual environments
+venv
+.env
+.venv
+
+# Package managers
+.apt
+.rpm
+
+# Language-specific
+# Python
+__pycache__/
+.pytest_cache
+
+# Java
+*.class
+*.jar
+bin/
+target/
+
+# Ruby
+.bundle
+log
+tmp
+
+# Other
+*.pem
+*.key
+*.pfx
+*.p12
+*.crt
+*.cer
+*.csr
+*.ppk
