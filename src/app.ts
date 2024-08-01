@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import userRouter from "./routes/userRoutes.js";
 import dataSourceRouter from "./routes/dataSourceRoutes.js";
+import FileDataRouter from "./routes/fileDataRoutes.js";
 
 const app = express();
 
@@ -23,4 +24,5 @@ app.use(morgan("dev"));
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/data-source", dataSourceRouter);
+app.use("/api/v1/file-data", FileDataRouter);
 export default app;
