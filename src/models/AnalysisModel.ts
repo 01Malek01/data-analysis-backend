@@ -7,6 +7,10 @@ const analysisSchema = new Schema({
     ref: "DataSource",
     required: true,
   },
+  chartType: {
+    enum: ["table", "pie", "bar", "line", "radar"],
+    type: String,
+  },
   name: { type: String, required: true },
   description: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },

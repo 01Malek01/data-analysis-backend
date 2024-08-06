@@ -1,15 +1,19 @@
 import mongoose from "mongoose";
+import DataSource from "./DataSourceModel.js";
 
 const fileDataSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     userId: { type: String, required: true, ref: "User" },
-    fileType: { type: String},
+    fileType: { type: String },
     data: { type: [Object], required: true },
   },
   {
     timestamps: true,
   }
 );
+
+
+
 const FileData = mongoose.model("FileData", fileDataSchema);
 export default FileData;
