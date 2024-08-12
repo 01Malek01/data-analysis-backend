@@ -17,7 +17,6 @@ dataSourceSchema.post("save", async function () {
     console.log(`Post-save hook triggered for dataSource: ${this._id}`);
     const fileData = await FileData.findOne({ name: this.name });
     if (fileData) {
-      console.log(`FileData found: ${fileData._id}, updating dataSource`);
       this.fileId = fileData._id;
       await this.save();
       console.log(`DataSource updated with fileId: ${fileData._id}`);

@@ -46,7 +46,7 @@ export const updateEmail = expressAsyncHandler(
       res.status(400).json({ message: "Email is required" });
       return;
     }
-    const user = await User.findOneAndUpdate({ auth0Id: req.auth0Id }, { email }, { new: true });
+    const user = await User.findOneAndUpdate({ auth0Id: req.auth0Id }, { email }, { new: true }).lean();
     if (!user) {
       res.status(404).json({ message: "User not found" });
       return;

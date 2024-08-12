@@ -5,14 +5,17 @@ import FileData from "../models/FileData.js";
 export const uploadFile = expressAsyncHandler(async (req, res) => {
   const currentUserId = req.userId;
   const { name, type, uploadUrl } = req.body;
-  const existingDataSource = await DataSource.findOne({
-    uploadUrl,
-  });
+
+  const [existingDataSource, fileData] = await Promise.all([
+    DataSource.findOne({ uploadUrl }),
+    FileData.findOne({ name }),
+  ]);
+
   if (existingDataSource) {
     res.status(409).json({ message: "File already exists" });
     return;
   }
-  const fileData = FileData.findOne({ name });
+
   if (!fileData) {
     res.status(404).json({ message: "File not found" });
     return;
@@ -24,19 +27,18 @@ export const uploadFile = expressAsyncHandler(async (req, res) => {
     type,
     uploadUrl,
   });
+
   res.status(201).json(newDataSource);
 });
 
 export const getFiles = expressAsyncHandler(async (req, res) => {
   const currentUserId = req.userId;
-  const files = await DataSource.find({ userId: currentUserId });
+  const files = await DataSource.find({ userId: currentUserId }).lean();
   res.status(200).json(files);
 });
 
-
-
 export const getDownloadLink = expressAsyncHandler(async (req, res) => {
-  const fileUrl = await DataSource.findOne({ fileId: req.params.id }).populate("fileId").select("uploadUrl");
+  const fileUrl = await DataSource.findById(req.params.id).select("uploadUrl");
   if (!fileUrl) {
     res.status(404).json({ message: "File not found" });
     return;
