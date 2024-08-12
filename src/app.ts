@@ -21,6 +21,9 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan("dev"));
+app.get('/test', (req, res) => {
+  res.send('test')
+})
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/data-source", dataSourceRouter);
