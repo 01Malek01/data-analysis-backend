@@ -1,13 +1,11 @@
 import mongoose, { Document } from "mongoose";
 
-
 interface FileData extends Document {
   name: string;
   userId: string;
   fileType: string;
   data: unknown[];
   notes: {
-    noteId: string;
     text: string;
     userId: string;
     createdAt: Date;

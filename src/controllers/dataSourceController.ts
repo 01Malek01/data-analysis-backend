@@ -38,7 +38,14 @@ export const getFiles = expressAsyncHandler(async (req, res) => {
 });
 
 export const getDownloadLink = expressAsyncHandler(async (req, res) => {
-  const fileUrl = await DataSource.findById(req.params.id).select("uploadUrl");
+  const currentUserId = req.userId;
+  const fileId = req.params.id;
+  const fileUrl = await DataSource.findOne({
+    fileId,
+    userId: currentUserId,
+  })
+    .select("uploadUrl -_id")
+    .lean();
   if (!fileUrl) {
     res.status(404).json({ message: "File not found" });
     return;

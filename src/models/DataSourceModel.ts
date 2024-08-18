@@ -14,12 +14,10 @@ const dataSourceSchema = new Schema({
 
 dataSourceSchema.post("save", async function () {
   try {
-    console.log(`Post-save hook triggered for dataSource: ${this._id}`);
     const fileData = await FileData.findOne({ name: this.name });
     if (fileData) {
       this.fileId = fileData._id;
       await this.save();
-      console.log(`DataSource updated with fileId: ${fileData._id}`);
     } else {
       console.log(`No FileData found for name: ${this.name}`);
     }
