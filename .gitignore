@@ -76,3 +76,4 @@ tmp
 *.cer
 *.csr
 *.ppk
+.vercel
