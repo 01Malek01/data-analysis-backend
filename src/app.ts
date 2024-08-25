@@ -13,7 +13,7 @@ dotenv.config({ path: "./.env" });
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://data-analysis-frontend-wine.vercel.app/",
     credentials: true,
   })
 );
