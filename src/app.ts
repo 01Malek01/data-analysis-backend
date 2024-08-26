@@ -11,12 +11,12 @@ const app = express();
 
 dotenv.config({ path: "./.env" });
 
-app.use(
-  cors({
-    origin: "https://data-analysis-frontend-wine.vercel.app/",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://data-analysis-frontend-wine.vercel.app/",
+//     credentials: true,
+//   })
+// );
 
 app.use(express.json());
 app.use(cookieParser());
