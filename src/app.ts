@@ -12,7 +12,7 @@ const app = express();
 dotenv.config({ path: "./.env" });
 
 const allowedOrigins = [
-  // "http://localhost:5173", // Local development
+  "http://localhost:5173", // Local development
   "https://data-analysis-frontend-wine.vercel.app" // Production frontend
 ];
 
